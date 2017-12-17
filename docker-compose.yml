@@ -1,0 +1,14 @@
+ version: "2"
+ services:
+   database:
+     build: /home/binary/alc_docker_app/mongodb/.
+     ports:
+       - "27017:27017"
+   alc-app:
+     build: /home/binary/alc_docker_app/.
+     ports:
+       - "3000:3000"
+     links:
+       - database
+     volumes:
+       - /home/binary/alc_docker_app/.:/usr/src/app
